@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Ocean_Android_Jetpack_30_06_2021.iml" filepath="$PROJECT_DIR$/.idea/modules/Ocean_Android_Jetpack_30_06_2021.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Ocean_Android_Jetpack_30_06_2021.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Ocean_Android_Jetpack_30_06_2021.app.iml" />
     </modules>
   </component>
 </project>
