@@ -3,6 +3,8 @@ package com.oceanbrasil.ocean_android_jetpack_30_06_2021
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
@@ -44,7 +46,7 @@ import androidx.lifecycle.ViewModelProvider
 //}
 
 class TextViewModel : ViewModel() {
-    var text = "Hello, world!"
+    val text = MutableLiveData<String>()
 }
 
 class MainActivity : AppCompatActivity() {
@@ -58,12 +60,21 @@ class MainActivity : AppCompatActivity() {
 
         val textView = findViewById<TextView>(R.id.textView)
 
-        textView.text = textViewModel.text
+        // Lógica de Apresentação
+        textViewModel.text.observe(this, {
+            textView.text = it
+        })
 
+        // Evento clique normal
         textView.setOnClickListener {
-            textViewModel.text = "Elemento clicado!"
+            textViewModel.text.value = "Elemento clicado!"
+        }
 
-            textView.text = textViewModel.text
+        // Evento clique longo
+        textView.setOnLongClickListener {
+            textViewModel.text.value = "Elemento clicado 2!"
+
+            true
         }
     }
 
