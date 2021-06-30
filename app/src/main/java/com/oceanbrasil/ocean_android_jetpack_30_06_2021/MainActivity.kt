@@ -3,9 +3,6 @@ package com.oceanbrasil.ocean_android_jetpack_30_06_2021
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 //class Pessoa(val nome: String) {
@@ -44,10 +41,6 @@ import androidx.lifecycle.ViewModelProvider
 //    val samsung = Calculadora2("Samsung")
 //    samsung.exibirMarca()
 //}
-
-class TextViewModel : ViewModel() {
-    val text = MutableLiveData<String>()
-}
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
