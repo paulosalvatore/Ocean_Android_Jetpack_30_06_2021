@@ -77,9 +77,9 @@ class MainActivity : AppCompatActivity() {
 
 //        val textView = findViewById<TextView>(R.id.textView)
 
-        cronometroViewModel.elapsedTime.observe(this, {
-            textView.text = "$it segundo(s) se passaram."
-        })
+//        cronometroViewModel.elapsedTime.observe(this, {
+//            textView.text = "$it segundo(s) se passaram."
+//        })
 
 /*
         val textViewModel =
