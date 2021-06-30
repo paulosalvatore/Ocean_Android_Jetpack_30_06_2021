@@ -16,7 +16,7 @@ class CronometroViewModel : ViewModel() {
                 // Ação a ser executada
                 val value = elapsedTime.value ?: 0
 
-                elapsedTime.value = value + 1
+                elapsedTime.postValue(value + 1)
             }, 1000, 1000
         )
     }

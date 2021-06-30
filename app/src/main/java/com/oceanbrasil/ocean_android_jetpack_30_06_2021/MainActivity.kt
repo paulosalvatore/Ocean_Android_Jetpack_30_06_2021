@@ -47,6 +47,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val cronometroViewModel =
+            ViewModelProvider(this)
+                .get(CronometroViewModel::class.java)
+
+        val textView = findViewById<TextView>(R.id.textView)
+
+        cronometroViewModel.elapsedTime.observe(this, {
+            textView.text = "$it segundo(s) se passaram."
+        })
+
+/*
         val textViewModel =
             ViewModelProvider(this)
                 .get(TextViewModel::class.java)
@@ -69,6 +80,7 @@ class MainActivity : AppCompatActivity() {
 
             true
         }
+*/
     }
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
