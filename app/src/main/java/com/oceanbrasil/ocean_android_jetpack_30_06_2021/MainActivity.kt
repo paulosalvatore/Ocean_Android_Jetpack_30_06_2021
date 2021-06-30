@@ -3,7 +3,9 @@ package com.oceanbrasil.ocean_android_jetpack_30_06_2021
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.oceanbrasil.ocean_android_jetpack_30_06_2021.databinding.ActivityMainBinding
 
 //class Pessoa(val nome: String) {
 //    fun exibirNome() {
@@ -45,13 +47,35 @@ import androidx.lifecycle.ViewModelProvider
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+//        setContentView(R.layout.activity_main)
+        val binding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        val textViewModel =
+            ViewModelProvider(this)
+                .get(TextViewModel::class.java)
+
+        binding.viewModel = textViewModel
+
+        val textView = findViewById<TextView>(R.id.textView)
+
+        // Evento clique normal
+        textView.setOnClickListener {
+            textViewModel.text.set("Elemento clicado!")
+        }
+
+        // Evento clique longo
+        textView.setOnLongClickListener {
+            textViewModel.text.set("Elemento clicado 2!")
+
+            true
+        }
 
         val cronometroViewModel =
             ViewModelProvider(this)
                 .get(CronometroViewModel::class.java)
 
-        val textView = findViewById<TextView>(R.id.textView)
+//        val textView = findViewById<TextView>(R.id.textView)
 
         cronometroViewModel.elapsedTime.observe(this, {
             textView.text = "$it segundo(s) se passaram."
