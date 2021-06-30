@@ -1,6 +1,7 @@
 package com.oceanbrasil.ocean_android_jetpack_30_06_2021
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -43,7 +44,7 @@ import androidx.lifecycle.ViewModelProvider
 //}
 
 class TextViewModel : ViewModel() {
-    val text = "Hello, world!"
+    var text = "Hello, world!"
 }
 
 class MainActivity : AppCompatActivity() {
@@ -51,8 +52,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val textViewModel =
+            ViewModelProvider(this)
+                .get(TextViewModel::class.java)
 
-        val textViewModel = ViewModelProvider(this).get(TextViewModel::class.java)
+        val textView = findViewById<TextView>(R.id.textView)
+
+        textView.text = textViewModel.text
+
+        textView.setOnClickListener {
+            textViewModel.text = "Elemento clicado!"
+
+            textView.text = textViewModel.text
+        }
     }
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
